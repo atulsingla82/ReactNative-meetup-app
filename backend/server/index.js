@@ -1,5 +1,7 @@
 import express from 'express';
+import dbconfig from './config/db';
 
+dbconfig();
 
 const app = express();
 
