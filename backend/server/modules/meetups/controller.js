@@ -27,4 +27,4 @@ try {
 	return res.status(e.status).json({error:true, message:'Error with the Meetup'});
 }
 
-}
+};

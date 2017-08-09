@@ -15,9 +15,9 @@ description:{
 
 eventDate:{
 	type:Date
-},{timestamps:true}
+}
 
 
-});
+},{timestamps:true});
 
 export default mongoose.model('Meetup',MeetupSchema);
