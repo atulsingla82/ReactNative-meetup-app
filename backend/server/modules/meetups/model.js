@@ -11,7 +11,11 @@ description:{
     type:String,
 	required:true
 
-} 
+} ,
+
+eventDate:{
+	type:Date
+},{timestamps:true}
 
 
 });
