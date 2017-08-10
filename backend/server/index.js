@@ -21,6 +21,6 @@ if (err){
 
 	console.error(err);
 } else {
-	console.log(`App listening on port: ${PORT}`);
+	console.log(`App is listening on port: ${PORT}`);
 }
 });
