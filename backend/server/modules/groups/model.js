@@ -26,4 +26,15 @@ ref:'Meetup'
 
 }, {timestamps:true});
 
+GroupSchema.statics.addMeetup = async function (id,args){
+    
+    const Meetup = mongoose.model('Meetup');
+
+	console.log (id, args)
+
+	const group = await this.findById(id);
+
+	const meetup = await new Meetup ({...args, group})
+}
+
 export default mongoose.model('Group', GroupSchema);
