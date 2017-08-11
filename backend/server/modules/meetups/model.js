@@ -11,7 +11,7 @@ title:{
 description:{
     type:String,
 	required:true,
-	minLength:[5, "At least 10 characters long"]
+	minLength:[10, "At least 10 characters long"]
 
 } ,
 

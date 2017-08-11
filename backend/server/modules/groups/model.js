@@ -6,13 +6,13 @@ name:{
 	type:String,
 	required: true,
 	unique:true,
-	minlength:[5,"Name must be 5 characters or more"]
+	minlength:[5,"Group name must be 5 characters or more"]
 },
 
 description:{
 	type:String,
 	required: true,
-	minlength:[10,"Name must be 10 characters or more"]
+	minlength:[10,"Group description must be 10 characters or more"]
 },
 category:{
 	type:String
@@ -34,7 +34,17 @@ GroupSchema.statics.addMeetup = async function (id,args){
 
 	const group = await this.findById(id);
 
+    // console.log(group);
+
 	const meetup = await new Meetup ({...args, group})
+
+	group.meetups.push(meetup);
+
+	const result = await Promise.all([meetup.save(),group.save()]);
+
+	return result;
 }
+
+
 
 export default mongoose.model('Group', GroupSchema);

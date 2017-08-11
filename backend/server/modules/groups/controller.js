@@ -18,7 +18,8 @@ if (!name){
 
 {
   return res.status(400).json({error:true, message:"Name must be a string"});
-}else if (name.length < 5 )
+} 
+  else if (name.length < 5 )
 
 {
   return res.status(400).json({error:true, message:"Name must have at least 5 characters "});
@@ -38,7 +39,7 @@ const group = new Group({name, description} )
 
 try {
 
-  return res.status(201).json({error:false,meetup: await group.save()})
+  return res.status(201).json({error:false,group: await group.save()})
 
 } catch (e){
 
@@ -61,10 +62,11 @@ if (!title){
 
 {
   return res.status(400).json({error:true, message:"Title must be a string"});
-}else if (title.length < 5 )
+}
+  else if (title.length < 5 )
 
 {
-  return res.status(400).json({error:true, message:"Name must have at least 5 characters "});
+  return res.status(400).json({error:true, message:"Title must have at least 5 characters "});
 }
 
 if (!description){
@@ -78,13 +80,15 @@ if (!description){
 
 if (!groupId){
   
-  return res.status(400).json({error:true, message:"Please provide a groupId"});
+  return res.status(400).json({error:true, message: "Please provide a Group Id"});
 
 } 
 
 try {
 
-  Group.addMeetup(groupId,{title,description});
+ const [meetup , group ] = await  Group.addMeetup(groupId,{title,description});
+
+ return res.status(201).json({error:false, meetup , group});
 
 } catch(e){
 	return res.status(400).json({error:true, message:"Meetup cannot be created"});
